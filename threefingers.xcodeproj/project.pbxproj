@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		38DF16B92E22A74100228685 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF16B82E22A74100228685 /* CoreGraphics.framework */; };
 		38DF16BB2E22A74800228685 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF16BA2E22A74800228685 /* ApplicationServices.framework */; };
-		38DF16BE2E22B02C00228685 /* OpenMultitouchSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 38DF16BD2E22B02C00228685 /* OpenMultitouchSupport */; };
+		38DF16CF2E22D81C00228685 /* OpenMultitouchSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 38DF16CE2E22D81C00228685 /* OpenMultitouchSupport */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		38DF16AB2E22A69400228685 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 10;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38DF16BE2E22B02C00228685 /* OpenMultitouchSupport in Frameworks */,
+				38DF16CF2E22D81C00228685 /* OpenMultitouchSupport in Frameworks */,
 				38DF16BB2E22A74800228685 /* ApplicationServices.framework in Frameworks */,
 				38DF16B92E22A74100228685 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -87,6 +87,7 @@
 			buildPhases = (
 				38DF16A92E22A69400228685 /* Sources */,
 				38DF16AA2E22A69400228685 /* Frameworks */,
+				38DF16CA2E22D6EC00228685 /* Run Script */,
 				38DF16AB2E22A69400228685 /* CopyFiles */,
 			);
 			buildRules = (
@@ -98,7 +99,7 @@
 			);
 			name = threefingers;
 			packageProductDependencies = (
-				38DF16BD2E22B02C00228685 /* OpenMultitouchSupport */,
+				38DF16CE2E22D81C00228685 /* OpenMultitouchSupport */,
 			);
 			productName = threefingers;
 			productReference = 38DF16AD2E22A69400228685 /* threefingers */;
@@ -129,7 +130,7 @@
 			mainGroup = 38DF16A42E22A69400228685;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				38DF16BC2E22B02C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */,
+				38DF16CD2E22D81C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 38DF16AE2E22A69400228685 /* Products */;
@@ -140,6 +141,27 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38DF16CA2E22D6EC00228685 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nFRAMEWORK_NAME=\"OpenMultitouchSupport\"\nFRAMEWORK_PATH=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORK_NAME}.framework\"\nDESTINATION_PATH=\"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH%/*}\"\n\nif [ -d \"$FRAMEWORK_PATH\" ]; then\n    echo \"Copying $FRAMEWORK_NAME.framework to $DESTINATION_PATH\"\n    cp -R \"$FRAMEWORK_PATH\" \"$DESTINATION_PATH\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		38DF16A92E22A69400228685 /* Sources */ = {
@@ -155,6 +177,7 @@
 		38DF16B22E22A69400228685 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -218,6 +241,7 @@
 		38DF16B32E22A69400228685 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -274,7 +298,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = "";
+				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -285,7 +311,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = "";
+				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -316,7 +344,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		38DF16BC2E22B02C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */ = {
+		38DF16CD2E22D81C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Kyome22/OpenMultitouchSupport";
 			requirement = {
@@ -327,9 +355,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		38DF16BD2E22B02C00228685 /* OpenMultitouchSupport */ = {
+		38DF16CE2E22D81C00228685 /* OpenMultitouchSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 38DF16BC2E22B02C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */;
+			package = 38DF16CD2E22D81C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */;
 			productName = OpenMultitouchSupport;
 		};
 /* End XCSwiftPackageProductDependency section */

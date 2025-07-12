@@ -20,9 +20,11 @@ xcodebuild -project ../threefingers.xcodeproj \
     -configuration Release \
     -derivedDataPath ./build \
     -arch arm64 -arch x86_64 \
-    ONLY_ACTIVE_ARCH=NO
+    ONLY_ACTIVE_ARCH=NO \
+    ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=YES \
+    SWIFT_PACKAGE_MANAGER_LINK_MODE=static
 
-# Copy the binary
+# Copy the statically linked binary
 cp "./build/Build/Products/Release/$BINARY_NAME" ./$BINARY_NAME
 
 # Verify it's universal
