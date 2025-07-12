@@ -456,14 +456,32 @@ func runSetup() {
     print("")
     print("⚡ Opening permission dialog...")
     
-    // Trigger the permission dialog
+    // First, trigger the permission dialog - this should show the macOS dialog
+    // and automatically add the app to System Settings > Privacy & Security > Accessibility
     let promptOptions = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true]
-    let _ = AXIsProcessTrustedWithOptions(promptOptions as CFDictionary)
+    let initialCheck = AXIsProcessTrustedWithOptions(promptOptions as CFDictionary)
     
+    if initialCheck {
+        print("✅ Permissions were already granted!")
+        print("")
+        print("🎉 Setup complete! ThreeFingers is ready to use.")
+        return
+    }
+    
+    // Give the system a moment to show the dialog
+    Thread.sleep(forTimeInterval: 1.0)
+    
+    print("")
+    print("📱 If the permission dialog appeared:")
+    print("   → Click 'Open System Settings' and enable threefingers")
+    print("")
+    print("🔧 If no dialog appeared, manually:")
+    print("   → Go to: System Settings → Privacy & Security → Accessibility")
+    print("   → Click '+' and add the threefingers app")
+    print("   → Enable the checkbox")
     print("")
     print("⏳ Waiting for you to grant permissions...")
     print("   (Press Ctrl+C to cancel)")
-    print("")
     
     // Poll for permission changes
     var attempts = 0
