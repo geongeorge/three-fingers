@@ -389,6 +389,8 @@ func main() {
             showHelp()
         case "--version", "-v", "version":
             showVersion()
+        case "setup":
+            runSetup()
         case "daemon", "service", "run":
             // Run as service (for Homebrew services)
             runService()
@@ -409,6 +411,7 @@ func showHelp() {
     print("")
     print("Usage:")
     print("  threefingers              - Run the service")
+    print("  threefingers setup        - Interactive setup (grants permissions)")
     print("  threefingers daemon       - Run as daemon (for Homebrew services)")
     print("  threefingers --help       - Show this help")
     print("  threefingers --version    - Show version")
@@ -423,6 +426,81 @@ func showHelp() {
 
 func showVersion() {
     print("ThreeFingers v1.0.0")
+}
+
+func runSetup() {
+    print("🚀 ThreeFingers Setup")
+    print("==================")
+    print("")
+    
+    // Check current permission status
+    let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): false]
+    let hasPermissions = AXIsProcessTrustedWithOptions(options as CFDictionary)
+    
+    if hasPermissions {
+        print("✅ Accessibility permissions are already granted!")
+        print("")
+        print("🎉 Setup complete! You can now:")
+        print("   • Run: threefingers")
+        print("   • Or install as service: brew services start threefingers")
+        return
+    }
+    
+    print("🔐 Accessibility permissions are required for ThreeFingers to work.")
+    print("")
+    print("📋 Please follow these steps:")
+    print("   1. A macOS dialog should appear asking for permission")
+    print("   2. If not, go to: System Settings → Privacy & Security → Accessibility")
+    print("   3. Click the '+' button and add 'threefingers'")
+    print("   4. Enable the checkbox next to 'threefingers'")
+    print("")
+    print("⚡ Opening permission dialog...")
+    
+    // Trigger the permission dialog
+    let promptOptions = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true]
+    let _ = AXIsProcessTrustedWithOptions(promptOptions as CFDictionary)
+    
+    print("")
+    print("⏳ Waiting for you to grant permissions...")
+    print("   (Press Ctrl+C to cancel)")
+    print("")
+    
+    // Poll for permission changes
+    var attempts = 0
+    let maxAttempts = 60 // 60 seconds
+    
+    while attempts < maxAttempts {
+        Thread.sleep(forTimeInterval: 1.0)
+        let checkOptions = [kAXTrustedCheckOptionPrompt.takeUnretainedValue(): false]
+        let nowHasPermissions = AXIsProcessTrustedWithOptions(checkOptions as CFDictionary)
+        
+        if nowHasPermissions {
+            print("✅ Permissions granted successfully!")
+            print("")
+            print("🎉 Setup complete! ThreeFingers is ready to use.")
+            print("")
+            print("🚀 Next steps:")
+            print("   • Test it: threefingers")
+            print("   • Install as service: brew services start threefingers")
+            print("   • View help: threefingers --help")
+            print("")
+            print("💡 Tip: The service will start automatically on boot once installed.")
+            return
+        }
+        
+        attempts += 1
+        if attempts % 10 == 0 {
+            print("   Still waiting... (\(60 - attempts)s remaining)")
+        }
+    }
+    
+    print("⏰ Timed out waiting for permissions.")
+    print("")
+    print("🔄 If you granted permissions, try running setup again:")
+    print("   threefingers setup")
+    print("")
+    print("❓ If you're having trouble, visit System Settings manually:")
+    print("   System Settings → Privacy & Security → Accessibility")
 }
 
 func runService() {

@@ -1,3 +1,7 @@
+# Three fingers
+
+- 3 finger tap for middle click on macos
+
 ## Test homebrew formula locally
 
 ```bash

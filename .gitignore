@@ -8,4 +8,5 @@ DerivedData/
 .netrc
 /release
 /build
+/dist-brew
 /dist
