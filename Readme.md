@@ -23,6 +23,8 @@ threefingers setup
 
 # Start the service
 brew services start threefingers
+# If already started
+brew services restart threefingers
 ```
 
 ## 📖 Usage
