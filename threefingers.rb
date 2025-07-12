@@ -36,8 +36,8 @@ class Threefingers < Formula
     puts "🎉 ThreeFingers installed successfully!"
     puts ""
     puts "🚀 Next steps:"
-    puts "1. Grant permissions: #{HOMEBREW_PREFIX}/bin/threefingers setup"
-    puts "2. Start service: brew services start threefingers"
+    puts "1. Grant permissions: threefingers setup"
+    puts "2. Restart service: brew services restart threefingers"
     puts ""
     puts "💡 The setup command will guide you through granting Accessibility permissions."
   end
