@@ -1,9 +1,9 @@
 class Threefingers < Formula
   desc "3-finger tap to middle click for macOS trackpads"
   homepage "https://github.com/geongeorge/threefingers"
-  url "https://github.com/geongeorge/threefingers/releases/download/v1.0.0/threefingers-v1.0.0.tar.gz"
-  sha256 "09ccc1d60b5ad6e4ef1c2cbf5084eabe867ab105014db2fcd6a5e1dbf00d7209"
-  version "1.0.0"
+  url "https://github.com/geongeorge/threefingers/releases/download/v1.0.2/threefingers-v1.0.2.tar.gz"
+  sha256 "54f2153ad5be577bfbe4bc96310ef5467ebae88eda88598e16d19701231dca83"
+  version "1.0.2"
   
   # Only works on macOS
   depends_on :macos
