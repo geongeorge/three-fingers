@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		38DF16B92E22A74100228685 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF16B82E22A74100228685 /* CoreGraphics.framework */; };
+		38DF16BB2E22A74800228685 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DF16BA2E22A74800228685 /* ApplicationServices.framework */; };
+		38DF16BE2E22B02C00228685 /* OpenMultitouchSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 38DF16BD2E22B02C00228685 /* OpenMultitouchSupport */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		38DF16AB2E22A69400228685 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		38DF16AD2E22A69400228685 /* threefingers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = threefingers; sourceTree = BUILT_PRODUCTS_DIR; };
+		38DF16B82E22A74100228685 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		38DF16BA2E22A74800228685 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,6 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DF16BE2E22B02C00228685 /* OpenMultitouchSupport in Frameworks */,
+				38DF16BB2E22A74800228685 /* ApplicationServices.framework in Frameworks */,
+				38DF16B92E22A74100228685 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				38DF16AF2E22A69400228685 /* threefingers */,
+				38DF16B72E22A74100228685 /* Frameworks */,
 				38DF16AE2E22A69400228685 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +67,15 @@
 				38DF16AD2E22A69400228685 /* threefingers */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		38DF16B72E22A74100228685 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38DF16BA2E22A74800228685 /* ApplicationServices.framework */,
+				38DF16B82E22A74100228685 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +98,7 @@
 			);
 			name = threefingers;
 			packageProductDependencies = (
+				38DF16BD2E22B02C00228685 /* OpenMultitouchSupport */,
 			);
 			productName = threefingers;
 			productReference = 38DF16AD2E22A69400228685 /* threefingers */;
@@ -106,6 +128,9 @@
 			);
 			mainGroup = 38DF16A42E22A69400228685;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				38DF16BC2E22B02C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 38DF16AE2E22A69400228685 /* Products */;
 			projectDirPath = "";
@@ -249,6 +274,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -258,6 +285,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -285,6 +314,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		38DF16BC2E22B02C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kyome22/OpenMultitouchSupport";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		38DF16BD2E22B02C00228685 /* OpenMultitouchSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 38DF16BC2E22B02C00228685 /* XCRemoteSwiftPackageReference "OpenMultitouchSupport" */;
+			productName = OpenMultitouchSupport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 38DF16A52E22A69400228685 /* Project object */;
 }

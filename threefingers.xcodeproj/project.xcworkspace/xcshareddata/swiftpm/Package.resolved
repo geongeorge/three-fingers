@@ -1,0 +1,15 @@
+{
+  "originHash" : "d618e6cadeca872cc819755d2de76f5889a8b9cf72f2038cf32249f14f900092",
+  "pins" : [
+    {
+      "identity" : "openmultitouchsupport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kyome22/OpenMultitouchSupport",
+      "state" : {
+        "revision" : "d7ec2276bea98711530dc610eb05563e9e1ce342",
+        "version" : "3.0.3"
+      }
+    }
+  ],
+  "version" : 3
+}
